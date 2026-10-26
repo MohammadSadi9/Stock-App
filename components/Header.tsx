@@ -1,14 +1,20 @@
   import Link from "next/link"
 import NavItems from "./NavItems"
 import UserDropdown from "./UserDropdown"
+import Image from "next/image"
+
 
   const Header = () => {
     return (
       <header className="sticky top-0 header">
         <div className="container header-wrapper">
-          <h1 className="text-2xl font-bold">My App</h1>
+         
           <Link href="/">
-            
+            <Image src='/NextLogo.png'  alt="NextTrader Logo"
+  width={200}
+  height={160}
+  priority className="block h-auto w-32  object-contain"/>
+          
           </Link>
           <nav className="hidden sm:block">
             <NavItems />
