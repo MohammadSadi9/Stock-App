@@ -3,23 +3,8 @@
 
 import { useForm } from "react-hook-form";
 import InputField from "@/components/form/InputField";
+import CountryList from "@/components/form/CountryList";
 
-const countries = [
-  { label: "🇮🇳 India", value: "India" },
-  { label: "🇺🇸 United States", value: "United States" },
-  { label: "🇬🇧 United Kingdom", value: "United Kingdom" },
-  { label: "🇨🇦 Canada", value: "Canada" },
-  { label: "🇦🇺 Australia", value: "Australia" },
-  { label: "🇦🇪 United Arab Emirates", value: "United Arab Emirates" },
-  { label: "🇸🇦 Saudi Arabia", value: "Saudi Arabia" },
-  { label: "🇵🇰 Pakistan", value: "Pakistan" },
-  { label: "🇧🇩 Bangladesh", value: "Bangladesh" },
-  { label: "🇸🇬 Singapore", value: "Singapore" },
-  { label: "🇯🇵 Japan", value: "Japan" },
-  { label: "🇩🇪 Germany", value: "Germany" },
-  { label: "🇫🇷 France", value: "France" },
-  { label: "🇳🇱 Netherlands", value: "Netherlands" },
-];
 
 const SignUp = () => {
   const {
@@ -74,14 +59,7 @@ const SignUp = () => {
           errors={errors}
         />
 
-        <InputField
-          name="country"
-          label="Country"
-          placeholder="Select your country"
-          options={countries}
-          register={register}
-          errors={errors}
-        />
+      <CountryList/>
 
         <InputField
           name="investmentGoals"
