@@ -1,13 +1,12 @@
-
 "use client";
 
 import { useForm } from "react-hook-form";
 import InputField from "@/components/form/InputField";
+import  { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { signIn } from "@/lib/actions/auth-actions";
 
-type SignInFormData = {
-  nameOrEmail: string;
-  password: string;
-};
+
 
 const SignIn = () => {
   const {
@@ -16,12 +15,35 @@ const SignIn = () => {
     formState: { errors, isSubmitting },
   } = useForm<SignInFormData>();
 
+ const router=useRouter() ; 
+
+
   const onSubmit = async (data: SignInFormData) => {
     try {
       console.log(data);
+
+      const result = await signIn(data);
+
+      if (result.success) {
+        router.push("/");
+      } else {
+        toast.error("Sign in failed", {
+          description: "Unable to sign in to your account.",
+        });
+      }
     } catch (error) {
-      console.error("Error signing in:", error);
+      console.error("Error submitting form:", error);
+
+      toast.error("Sign in failed", {
+        description:
+          error instanceof Error
+            ? error.message
+            : "Failed to sign in to your account",
+      });
     }
+
+
+
   };
 
   return (
@@ -39,8 +61,8 @@ const SignIn = () => {
         </p>
 
         <InputField
-          name="nameOrEmail"
-          label="Name or Email"
+          name="email"
+          label="Email"
           placeholder="Enter your name or email"
           register={register}
           errors={errors}
