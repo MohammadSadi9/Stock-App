@@ -1,7 +1,7 @@
 import { Inngest } from "inngest";
 
 export const inngest = new Inngest({
-  id: "NextTracker",
+  id: "NextTracker  ",
   ai: {
     gemini: {
       apiKey: process.env.GEMINI_API_KEY!,

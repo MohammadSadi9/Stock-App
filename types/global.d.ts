@@ -3,7 +3,12 @@ declare global {
         email: string;
         password: string;
     };
-
+  type CountryOption = {
+    name: string;
+    isoCode: string;
+    flag: string;
+    phonecode: string;
+  };
     type SignUpFormData = {
         fullName: string;
         email: string;
